@@ -32,7 +32,7 @@ class LFUCache(BaseCaching):
                 leastF = 999999
                 leastKey = 0
                 for lkey, value in self._keys.items():
-                    if value < leastF:
+                    if value <= leastF:
                         leastKey = lkey
                         leastF = value
                 del self._keys[leastKey]
