@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    LIFO caching class
+    MRU caching class
 """
 
 from base_caching import BaseCaching
