@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """
+    LFU cach class
 """
 
 from base_caching import BaseCaching
