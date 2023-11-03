@@ -2,13 +2,15 @@
 """
    Basic Flask app
 """
-from flask import Flask
-from flask import render_template
+from flask import (
+    Flask,
+    render_template,
+)
 
 app = Flask(__name__)
 
 
-@app_view.route('/')
+@app.route('/')
 def simple():
     """
         Returns a simple template
