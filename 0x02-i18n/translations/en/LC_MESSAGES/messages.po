@@ -1,14 +1,14 @@
 # English translations for PROJECT.
 # Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <elisereflorbusole@gmail.com>, 2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-11-03 23:02+0000\n"
-"PO-Revision-Date: 2023-11-03 23:02+0000\n"
+"POT-Creation-Date: 2023-11-03 23:34+0000\n"
+"PO-Revision-Date: 2023-11-03 23:34+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.13.1\n"
 
-#: templates/0-index.html:4 templates/1-index.html:4 templates/2-index.html:4
-msgid "Welcome to Holberton"
-msgstr ""
+#: templates/3-index.html:4
+msgid "home_title"
+msgstr "Welcome to Holberton"
 
-#: templates/0-index.html:7 templates/1-index.html:7 templates/2-index.html:7
-msgid "Hello world"
-msgstr ""
+#: templates/3-index.html:7
+msgid "home_header"
+msgstr "Hello world!"
 
