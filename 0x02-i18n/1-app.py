@@ -12,25 +12,18 @@ from flask import (
 app = Flask(__name__)
 babel = Babel(app)
 
-
 class Config(object):
     """
         COnfigure available languages
     """
     LANGUAGES = ["en", "fr"]
 
-    def __init__(self, babel):
-        self._babel = babel
-
-    def set_default_locale(self):
-        """ sets local """
-        self._babel.BABEL_DEFAULT_LOCALE = self.LANGUAGES[0]
-        self._babel.BABEL_DEFAULT_TIMEZONE = 'UTC'
-
-
-config = Config(babel)
-config.set_default_locale()
-
+@babel.localeselector
+def get_local():
+    """
+        gets local
+    """
+    return Config.LANGUAGES[0]
 
 @app.route('/')
 def simple():
