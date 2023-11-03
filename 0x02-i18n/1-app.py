@@ -25,7 +25,7 @@ class Config(object):
     def set_default_locale(self):
         """ sets local """
         self._babel.BABEL_DEFAULT_LOCALE = self.LANGUAGES[0]
-        self._babel.BABEL_DEFAULT_TIMEZONE = 'UTF'
+        self._babel.BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
 config = Config(babel)
