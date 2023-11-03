@@ -18,11 +18,11 @@ class Config(object):
         COnfigure available languages
     """
     LANGUAGES = ["en", "fr"]
-    DEFAULT_ZONE = "UTC"
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
+
 
 app.config.from_object(Config)
-babel.BABEL_DEFAULT_LOCALE = Config.LANGUAGES[0]
-babel.BABEL_DEFAULT_TIMEZONE = Config.DEFAULT_ZONE
 
 
 @app.route('/')
