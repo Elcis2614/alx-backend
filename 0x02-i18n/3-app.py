@@ -37,4 +37,4 @@ def simple():
     """
         Returns a simple template
     """
-    return render_template('2-index.html')
+    return render_template('3-index.html')
