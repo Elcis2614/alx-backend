@@ -13,6 +13,7 @@ from flask import (
     Flask,
     render_template,
     request,
+    g,
 )
 
 app = Flask(__name__)
@@ -47,13 +48,18 @@ def get_locale():
     if "locale" in request.args:
         if (request.args["locale"] in Config.LANGUAGES):
             return request.args["locale"]
+    elif "login_as" in request.args:
+        user = get_user(resquest.args["login_as"])
+        if user is not None:
+            return user["locale"]
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
 @app.before_request
 def before_request():
     """
-        Uses get_user to find a user if any, and set it as a global on flask.g.user
+        Uses get_user to find a user if any, and set it
+        as a global on flask.g.user
     """
     if "login_as" in request.args:
         user = get_user(request.args["login_as"])
@@ -63,19 +69,20 @@ def before_request():
 
 def get_user(user_id: int) -> [dict, None]:
     """
-        returns a user dictionary or None if the ID 
+        returns a user dictionary or None if the ID
         cannot be found or if login_as was not passed.
     """
     if user_id not in users.keys() or user_id is None:
         return None
     return users[user_id]
 
+
 @app.route('/')
 def simple():
     """
         Returns a simple template
     """
-    usr = g.user
+    usr = "NOBODY"
     if usr is not None:
-        return render_templates('5-index.html', username = usr.name)
-    return render_template('5-index.html', username = None)
+        return render_template('5-index.html', username="NOBODY")
+    return render_template('5-index.html')
