@@ -32,6 +32,9 @@ app.config.from_object(Config)
 @babel.localeselector
 def get_locale():
     """ determine the best match with our supported languages."""
+    if "locale" in request.args:
+        if (request.args["locale"] in Config.LANGUAGES):
+            return request.args["locale"]
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
@@ -40,4 +43,4 @@ def simple():
     """
         Returns a simple template
     """
-    return render_template('3-index.html')
+    return render_template('4-index.html')
