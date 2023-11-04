@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
+   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
    Basic Flask app with Config class
    And Babel setup for traduction
+   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 """
 from flask_babel import (
     Babel,
