@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-   Basic Flask app
-   WIth Babel setup
+   Basic Flask app with Config class
+   And Babel setup for traduction
 """
 from flask_babel import (
     Babel,
@@ -19,7 +19,8 @@ babel = Babel(app)
 
 class Config(object):
     """
-        COnfigure available languages
+        Used as configuration for the app
+        Contains default and available languages
     """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
@@ -31,7 +32,7 @@ app.config.from_object(Config)
 
 @babel.localeselector
 def get_locale():
-    """ 
+    """
         Determine the best match with our supported languages.
         Or forces locale with URL parameter
     """
