@@ -48,10 +48,9 @@ def get_locale():
     if "locale" in request.args:
         if (request.args["locale"] in Config.LANGUAGES):
             return request.args["locale"]
-    elif "login_as" in request.args:
-        user = get_user(resquest.args["login_as"])
-        if user is not None:
-            return user["locale"]
+    elif g.user:
+        if g.user.get("locale"):
+            return g.user.get("locale")
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
@@ -65,6 +64,8 @@ def before_request():
         user = get_user(request.args["login_as"])
         if user is not None:
             g.user = user
+        else:
+            g.user = None
 
 
 def get_user(user_id: int) -> [dict, None]:
@@ -72,9 +73,10 @@ def get_user(user_id: int) -> [dict, None]:
         returns a user dictionary or None if the ID
         cannot be found or if login_as was not passed.
     """
-    if user_id not in users.keys() or user_id is None:
+    try:
+        return users[int(user_id)]
+    except AttributeError:
         return None
-    return users[user_id]
 
 
 @app.route('/')
@@ -82,7 +84,8 @@ def simple():
     """
         Returns a simple template
     """
-    usr = "NOBODY"
-    if usr is not None:
-        return render_template('5-index.html', username="NOBODY")
-    return render_template('5-index.html')
+    try:
+        usr = g.user.get("name", None)
+        return render_template('5-index.html', username=usr)
+    except AttributeError:
+        return render_template('5-index.html')
