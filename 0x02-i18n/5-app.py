@@ -45,7 +45,10 @@ def get_locale():
         Determine the best match with our supported languages.
         Or forces locale with URL parameter
     """
-    if g.user:
+    if "locale" in request.args:
+        if request.args["locale"]:
+            return request.args["locale"]
+    elif g.user:
         if g.user.get("locale"):
             return g.user.get("locale")
     return request.accept_languages.best_match(Config.LANGUAGES)
@@ -73,6 +76,8 @@ def get_user(user_id: int) -> [dict, None]:
     try:
         return users[int(user_id)]
     except AttributeError:
+        return None
+    except KeyError:
         return None
 
 
